@@ -54,3 +54,6 @@ class TTT {
         return false;
     }
 }
+document.addEventListener("DOMContentLoaded", () => {
+    new TTT();
+});
