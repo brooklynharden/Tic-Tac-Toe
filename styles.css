@@ -10,6 +10,7 @@ body{
     gap: 5px;
     margin: 20px auto;
     width: 320px;
+    background-color:pink;
 }
 
 .cell {
@@ -21,12 +22,12 @@ body{
     width: 100px;
     height:100px;
     cursor: pointer;
-    border: 1px solid black;
+    border: 2px solid black;
 }
 
 .cell.taken {
     pointer-events: none;
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
 }
 
 button {
