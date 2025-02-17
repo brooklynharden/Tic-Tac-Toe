@@ -37,7 +37,7 @@ class TTT {
             //stores the number of cell so we know its position
             cell.dataset.index = i.toString();
 
-            cell.addEventListener("Click", () => this.makeMove(i,cell));
+            cell.addEventListener("click", () => this.makeMove(i,cell));
 
             //adding the cells to the board
             boardElement.appendChild(cell);
@@ -70,4 +70,8 @@ class TTT {
     private checkWinner(): boolean{
         return false;
     }
+
 }
+document.addEventListener("DOMContentLoaded", () => {new TTT();
+
+});

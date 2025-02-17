@@ -7,11 +7,15 @@ class TTT {
         }
         this.currentPlayer = "X";
         this.isGameOver = false;
-        console.log("Creatting board...");
         this.createBoard();
     }
     createBoard() {
+        console.log("board is called working");
         const boardElement = document.getElementById("board");
+        if (!boardElement) {
+            console.error("board not working");
+            return;
+        }
         //CLEARS any existing content in the board
         boardElement.innerHTML = "";
         for (let i = 0; i < this.board.length; i++) {
@@ -21,10 +25,12 @@ class TTT {
             cell.classList.add("cell");
             //stores the number of cell so we know its position
             cell.dataset.index = i.toString();
-            cell.addEventListener("Click", () => this.makeMove(i, cell));
+            cell.addEventListener("click", () => this.makeMove(i, cell));
             //adding the cells to the board
             boardElement.appendChild(cell);
+            console.log(`there are ${i} created`);
         }
+        console.log("the board is working");
     }
     makeMove(index, cell) {
         if (this.isGameOver || this.board[index] !== "") {
