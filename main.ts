@@ -12,6 +12,8 @@ class TTT {
         this.currentPlayer= "X";
         this.isGameOver = false;
         this.createBoard();
+
+        document.getElementById("reset")!.addEventListener("click", () => this.resetGame());
     }
 
     // private createBoard():void{
@@ -121,6 +123,18 @@ class TTT {
     }
     return false;
 }
+    private resetGame ():void{
+        this.board = Array(9).fill("");
+        this.currentPlayer = 'X';
+        this.isGameOver = false;
+
+        const cells = document.querySelectorAll(".cell");
+        cells.forEach(cell => {
+            cell.textContent = "";
+            cell.classList.remove("taken");
+        });
+        document.getElementById("status")!.textContent = "Players X's turn";
+    }
 }
 document.addEventListener("DOMContentLoaded", () => {new TTT();
 
