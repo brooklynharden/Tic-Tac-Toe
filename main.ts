@@ -14,38 +14,62 @@ class TTT {
         this.createBoard();
     }
 
-    private createBoard():void{
+    // private createBoard():void{
+    //     console.log("board is called working");
+    //     const boardElement = document.getElementById("board") as HTMLDivElement;
+
+    //     if(!boardElement){
+    //         console.error("board not working");
+    //         return;
+    //     }
+
+    //     //CLEARS any existing content in the board
+    //     boardElement.innerHTML = "";
+
+    //     for(let i=0; i< this.board.length;i++){
+
+    //         //creating a new box (div) for each cell
+    //         const cell = document.createElement("div");
+
+    //         //giving it a class name to edit later
+    //         cell.classList.add("cell");
+
+    //         //stores the number of cell so we know its position
+    //         cell.dataset.index = i.toString();
+
+    //         cell.addEventListener("click", () => this.makeMove(i,cell));
+
+    //         //adding the cells to the board
+    //         boardElement.appendChild(cell);
+
+    //         console.log(`there are ${i} created`);
+    //     }
+    //     console.log("the board is working");
+    // }
+
+    private createBoard(): void {
         console.log("board is called working");
         const boardElement = document.getElementById("board") as HTMLDivElement;
-
-        if(!boardElement){
-            console.error("board not working");
+    
+        if (!boardElement) {
+            console.error("board not found");
             return;
         }
-
-        //CLEARS any existing content in the board
-        boardElement.innerHTML = "";
-
-        for(let i=0; i< this.board.length;i++){
-
-            //creating a new box (div) for each cell
+    
+        boardElement.innerHTML = ""; // Clears board
+    
+        for (let i = 0; i < this.board.length; i++) {
             const cell = document.createElement("div");
-
-            //giving it a class name to edit later
             cell.classList.add("cell");
-
-            //stores the number of cell so we know its position
             cell.dataset.index = i.toString();
-
-            cell.addEventListener("click", () => this.makeMove(i,cell));
-
-            //adding the cells to the board
+            cell.addEventListener("click", () => this.makeMove(i, cell));
+    
             boardElement.appendChild(cell);
-
-            console.log(`there are ${i} created`);
+    
+            console.log(`Cell ${i} created`, cell);
         }
-        console.log("the board is working");
     }
+    
 
     private makeMove (index: number, cell:HTMLDivElement):void{
         if(this.isGameOver || this.board[index] !== ""){

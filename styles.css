@@ -18,12 +18,12 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: antiquewhite;
+    background-color: blue;
     font-size: 2em;
     width: 100px;
     height:100px;
     cursor: pointer;
-    border: 2px solid black;
+    border: 2px solid red;
 }
 
 .cell.taken {
