@@ -15,7 +15,13 @@ class TTT {
     }
 
     private createBoard():void{
+        console.log("board is called working");
         const boardElement = document.getElementById("board") as HTMLDivElement;
+
+        if(!boardElement){
+            console.error("board not working");
+            return;
+        }
 
         //CLEARS any existing content in the board
         boardElement.innerHTML = "";
@@ -35,7 +41,10 @@ class TTT {
 
             //adding the cells to the board
             boardElement.appendChild(cell);
+
+            console.log(`there are ${i} created`);
         }
+        console.log("the board is working");
     }
 
     private makeMove (index: number, cell:HTMLDivElement):void{
