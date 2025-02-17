@@ -31,8 +31,34 @@ class TTT {
             //stores the number of cell so we know its position
             cell.dataset.index = i.toString();
 
+            cell.addEventListener("Click", () => this.makeMove(i,cell));
+
             //adding the cells to the board
             boardElement.appendChild(cell);
         }
+    }
+
+    private makeMove (index: number, cell:HTMLDivElement):void{
+        if(this.isGameOver || this.board[index] !== ""){
+            return;
+        }
+        this.board[index]= this.currentPlayer;
+
+        cell.textContent = this.currentPlayer;
+
+        if(this.checkWinner()){
+            alert(`${this.currentPlayer} wins!`);
+            this.isGameOver = true;
+            return;
+        }
+        if (this.currentPlayer === "X"){
+            this.currentPlayer = "0";
+        }else{
+            this.currentPlayer = "X";
+        }
+    }
+
+    private checkWinner(): boolean{
+        return false;
     }
 }
