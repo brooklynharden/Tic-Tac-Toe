@@ -80,21 +80,47 @@ class TTT {
         cell.textContent = this.currentPlayer;
 
         if(this.checkWinner()){
-            alert(`${this.currentPlayer} wins!`);
+            document.getElementById("status")!.textContent = (`${this.currentPlayer} wins!`);
             this.isGameOver = true;
             return;
         }
-        if (this.currentPlayer === "X"){
-            this.currentPlayer = "0";
-        }else{
-            this.currentPlayer = "X";
+
+        if(!this.board.includes("")){
+            document.getElementById("status")!.textContent = "It's a tie!";
+            this.isGameOver = true;
         }
-    }
+        this.currentPlayer = this.currentPlayer === "X" ? "O" : "X";
+        document.getElementById("status")!.textContent = `Player ${this.currentPlayer}'s turn`;
+        }
 
     private checkWinner(): boolean{
-        return false;
+        const winningCombos = [
+            [0,1,2], [3,4,5], [6,7,8],
+            [0,3,7], [1,4,7], [2,5,8],
+            [0,4,8], [2,4,6]
+        ];
+        
+        if(
+            /*top*/ (this.board[0] !== "" && this.board[0] === this.board[1] && this.board[1] === this.board[2])
+            ||
+            /*middle*/ (this.board[3] !== "" && this.board[3] === this.board[4] && this.board[4]=== this.board[5])
+            ||
+            /*bottom*/ (this.board[6] !== "" && this.board[6] === this.board[7] && this.board[7] === this.board[8])
+            ||
+            /*left column*/ (this.board[0] !== "" && this.board[0] === this.board[3] && this.board[3] === this.board[7])
+            ||
+            /*middle column*/ (this.board[1] !== "" && this.board[1] === this.board[4] && this.board[4] === this.board[7])
+            ||
+            /*right column*/ (this.board[2] !== "" && this.board[2] === this.board[5] && this.board[5] === this.board[8])
+            ||
+            /*diagonal \ */ (this.board[0] !== "" && this.board[0] === this.board[4] && this.board[4] === this.board[8])
+            ||
+            /*diagonal / */ (this.board[2] !== "" && this.board[2] === this.board[4] && this.board[4] === this.board[6]) 
+        ){
+        return true;
     }
-
+    return false;
+}
 }
 document.addEventListener("DOMContentLoaded", () => {new TTT();
 
