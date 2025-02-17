@@ -90,6 +90,7 @@ class TTT {
         if(!this.board.includes("")){
             document.getElementById("status")!.textContent = "It's a tie!";
             this.isGameOver = true;
+            return;
         }
         this.currentPlayer = this.currentPlayer === "X" ? "O" : "X";
         document.getElementById("status")!.textContent = `Player ${this.currentPlayer}'s turn`;
